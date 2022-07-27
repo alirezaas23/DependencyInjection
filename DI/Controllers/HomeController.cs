@@ -1,4 +1,5 @@
-﻿using DI.Models;
+﻿using DI.Interfaces;
+using DI.Models;
 using DI.Services;
 using DI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,19 @@ namespace DI.Controllers
 {
     public class HomeController : Controller
     {
+        private ISmsService _smsService;
+
+        public HomeController(ISmsService smsService)
+        {
+            _smsService = smsService;
+        }
+
         public IActionResult Index()
         {
-            var smsService = new KavenegarService();
-            var status = new IndexViewModel();
-            status.SMSStatus = smsService.SendSMS();
+            var status = new IndexViewModel()
+            {
+                SMSStatus = _smsService.SendSMS()
+            };
             ViewBag.Message = status.SMSStatus;
             return View();
         }

@@ -1,6 +1,8 @@
-﻿namespace DI.Services
+﻿using DI.Interfaces;
+
+namespace DI.Services
 {
-    public class ParsGreenService
+    public class ParsGreenService : ISmsService
     {
         public string SendSMS()
         {

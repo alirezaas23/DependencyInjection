@@ -1,6 +1,8 @@
-﻿namespace DI.Services
+﻿using DI.Interfaces;
+
+namespace DI.Services
 {
-    public class KavenegarService
+    public class KavenegarService : ISmsService
     {
         public string SendSMS()
         {
