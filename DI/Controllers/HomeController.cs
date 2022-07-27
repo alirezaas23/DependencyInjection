@@ -15,22 +15,24 @@ namespace DI.Controllers
 {
     public class HomeController : Controller
     {
-        private ISmsService _smsService;
+        //private ISmsService _smsService;
         private KevenegarApiViewModel _kevenegarApi;
         private PasargadBankViewModel _pasargadBank;
 
-        public HomeController(ISmsService smsService, IOptions<KevenegarApiViewModel> kavenegarOptions, IOptions<PasargadBankViewModel> pasargadBankOptions)
+        public HomeController(/*ISmsService smsService, */ IOptions<KevenegarApiViewModel> kavenegarOptions, IOptions<PasargadBankViewModel> pasargadBankOptions)
         {
-            _smsService = smsService;
+            //_smsService = smsService;
             _kevenegarApi = kavenegarOptions.Value;
             _pasargadBank = pasargadBankOptions.Value;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(
+            [FromServices] ISmsService smsService
+            )
         {
             var status = new IndexViewModel()
             {
-                SMSStatus = _smsService.SendSMS()
+                SMSStatus = smsService.SendSMS()
             };
             ViewBag.Message = status.SMSStatus;
             return View();
