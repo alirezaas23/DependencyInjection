@@ -25,7 +25,7 @@ namespace DI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            DependencyContainer.RegisterServices(services);
+            DependencyContainer.RegisterServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

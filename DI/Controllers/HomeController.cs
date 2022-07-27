@@ -4,6 +4,7 @@ using DI.Services;
 using DI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,10 +16,14 @@ namespace DI.Controllers
     public class HomeController : Controller
     {
         private ISmsService _smsService;
+        private KevenegarApiViewModel _kevenegarApi;
+        private PasargadBankViewModel _pasargadBank;
 
-        public HomeController(ISmsService smsService)
+        public HomeController(ISmsService smsService, IOptions<KevenegarApiViewModel> kavenegarOptions, IOptions<PasargadBankViewModel> pasargadBankOptions)
         {
             _smsService = smsService;
+            _kevenegarApi = kavenegarOptions.Value;
+            _pasargadBank = pasargadBankOptions.Value;
         }
 
         public IActionResult Index()
@@ -33,6 +38,8 @@ namespace DI.Controllers
 
         public IActionResult Privacy()
         {
+            ViewBag.KavenegarApi = _kevenegarApi.Api;
+            ViewBag.PasargadBankId = _pasargadBank.TerminalId;
             return View();
         }
 
