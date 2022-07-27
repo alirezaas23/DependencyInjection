@@ -1,4 +1,6 @@
 ﻿using DI.Models;
+using DI.Services;
+using DI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,15 +13,12 @@ namespace DI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
+            var smsService = new KavenegarService();
+            var status = new IndexViewModel();
+            status.SMSStatus = smsService.SendSMS();
+            ViewBag.Message = status.SMSStatus;
             return View();
         }
 
