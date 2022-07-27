@@ -1,3 +1,4 @@
+using DI.MiddleWares;
 using DI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,8 @@ namespace DI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<Middleware>();
 
             app.UseEndpoints(endpoints =>
             {

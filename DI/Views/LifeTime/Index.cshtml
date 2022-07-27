@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    var  lifeTimeList = ViewData["lifeTimeList"] as List<string>;
+}
+
+<h1>LifeTimes in controller and middleware</h1>
+<hr />
+@foreach(var item in lifeTimeList)
+{
+    <p>@item</p>
+}
+

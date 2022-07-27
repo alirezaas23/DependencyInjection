@@ -13,6 +13,9 @@ namespace DI.Models
             services.AddTransient<ISmsService, KavenegarService>();
             services.Configure<KevenegarApiViewModel>(configuration.GetSection("KavenegarAPI"));
             services.Configure<PasargadBankViewModel>(configuration.GetSection("PasargadBank"));
+            services.AddTransient<TransientService>();
+            services.AddScoped<ScopedService>();
+            services.AddSingleton<SingletonService>();
         }
     }
 }
