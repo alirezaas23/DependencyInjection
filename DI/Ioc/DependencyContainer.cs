@@ -15,9 +15,11 @@ namespace DI.Ioc
 
             // Work fot all
             services.AddTransient(typeof(ISmsService), typeof(ParsGreenService));
-
+            
+            // Read from addsettings.json
             services.Configure<KevenegarApiViewModel>(configuration.GetSection("KavenegarAPI"));
             services.Configure<PasargadBankViewModel>(configuration.GetSection("PasargadBank"));
+
             services.AddTransient<TransientService>();
 
             services.AddScoped<ScopedService>();
