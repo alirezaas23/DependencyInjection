@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace DI.Models
+namespace DI.Ioc
 {
     public static class DependencyContainer
     {
@@ -32,6 +32,6 @@ namespace DI.Models
 
 
             // If you want to inject in views use => Inject<TransientService> TransientSerivce. Dont forget to using requirments :).
-         }
+        }
     }
 }

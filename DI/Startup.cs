@@ -1,3 +1,4 @@
+using DI.Ioc;
 using DI.MiddleWares;
 using DI.Models;
 using Microsoft.AspNetCore.Builder;
